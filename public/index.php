@@ -20,10 +20,8 @@ $serverRequest = $creator->fromGlobals();
 $path = $serverRequest->getUri()->getPath();
 
 if ($path === '/now') {
-    $response = $psr17Factory->createResponse(200)
-                             ->withBody(
-                                 $psr17Factory->createStream(date('Y-m-d H:i:s'))
-                             );
+    $handler = new \conao3\MyPsr\Http\Handler\DateAction();
+    $response = $handler->handle($serverRequest);
 }
 
 (new \Laminas\HttpHandlerRunner\Emitter\SapiEmitter())->emit($response);
