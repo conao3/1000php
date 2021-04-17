@@ -1,4 +1,9 @@
 {
+    "autoload": {
+        "psr-4": {
+            "conao3\\MyPsr\\": "src"
+        }
+    },
     "require": {
         "php": "^8.0",
         "psr/http-message": "^1.0",
