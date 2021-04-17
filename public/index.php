@@ -26,4 +26,4 @@ if ($path === '/now') {
                              );
 }
 
-echo (string)$response->getBody();
+(new \Laminas\HttpHandlerRunner\Emitter\SapiEmitter())->emit($response);
