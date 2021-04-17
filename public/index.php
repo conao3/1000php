@@ -22,6 +22,11 @@ $path = $serverRequest->getUri()->getPath();
 if ($path === '/now') {
     $handler = new \conao3\MyPsr\Http\Handler\DateAction();
     $response = $handler->handle($serverRequest);
+} else {
+    $response = $psr17Factory->createResponse(404)
+                             ->withBody(
+                                 $psr17Factory->createStream('Page not found')
+                             );
 }
 
 (new \Laminas\HttpHandlerRunner\Emitter\SapiEmitter())->emit($response);
