@@ -17,4 +17,8 @@ $creator = new \Nyholm\Psr7Server\ServerRequestCreator(
 
 $serverRequest = $creator->fromGlobals();
 
-dd($serverRequest->getUri());
+$path = $serverRequest->getUri()->getPath();
+
+if ($path === '/now') {
+    echo date('Y-m-d H:i:s');
+}
